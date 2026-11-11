@@ -42,7 +42,7 @@
 .math-visual .mini-card .readout{background:#f5f8ff;font-size:.73rem;padding:8px;border-color:#e7edf6;margin-top:10px;min-height:52px;overflow-wrap:anywhere}
 .math-visual .mini-card label{display:block;font-size:.74rem;color:#536785;font-weight:700;margin:10px 0 0}
 .math-visual .mini-card input[type="range"]{margin:5px 0}
-.math-visual .mapping-head{display:grid;grid-template-columns:1fr 43px 1fr;gap:8px;font-weight:900;color:#536987;font-size:.86rem;text-align:center;margin:16px 0 8px}
+.math-visual .mapping-head{display:grid;grid-template-columns:1fr 43px 1fr;gap:8px;font-weight:900;color:#536987;font-size:.86rem;text-align:center;max-width:530px;margin:16px auto 8px}
 .math-visual .mapping-row{display:grid;grid-template-columns:1fr 43px 1fr;gap:8px;align-items:center;max-width:530px;margin:7px auto}
 .math-visual .mapping-box{display:grid;place-items:center;background:white;border:1px solid #d2dfed;border-radius:10px;min-height:46px;color:#204b84;font-weight:850;font-size:1.12rem}
 .math-visual .mapping-box.out{color:#1e784e;background:#edf9f1;border-color:#c1e3cf}
