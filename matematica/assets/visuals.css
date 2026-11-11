@@ -1,0 +1,73 @@
+
+/* Visualizzazioni didattiche Tutoring — condividono palette e font del sito */
+.concept-stack{display:grid;gap:17px}
+.concept-block{background:#fff;border:1px solid #e0e7f1;border-radius:17px;box-shadow:0 9px 26px rgba(37,54,81,.055);padding:clamp(18px,3vw,26px);min-width:0}
+.concept-block .concept-label{font-size:.73rem;letter-spacing:.11em;text-transform:uppercase;font-weight:900;color:#59779d}
+.concept-block h3{font-size:1.3rem;margin:8px 0 10px;color:#1a2940}
+.concept-block .concept-tex{display:inline-block;background:#eef3fc;border:1px solid #dfe8f5;border-radius:9px;padding:10px 14px;margin:3px 0 9px;max-width:100%;overflow:auto}
+.concept-block p{color:#536781;margin:6px 0 10px;max-width:760px}
+.concept-block .visual-slot{margin-top:17px;min-width:0}
+.math-visual{background:#f8faff;border:1px solid #dce6f5;padding:clamp(15px,2.5vw,22px);border-radius:14px;overflow:hidden}
+.math-visual h4{font-size:1.04rem;letter-spacing:-.012em;color:#1b385e;margin:0 0 7px}
+.math-visual p{font-size:.88rem;margin:5px 0 12px;color:#5c708b;max-width:800px}
+.math-visual .visual-caption{font-size:.79rem;color:#6a7c95;margin:12px 0 0}
+.math-visual .sign-choices{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin:12px 0 18px}
+.math-visual .sign-choice{border:1px solid #d4dfed;border-radius:11px;padding:11px 7px;background:#fff;text-align:center}
+.math-visual .sign-choice b{display:block;line-height:1.2;font:900 1.2rem ui-monospace,Consolas,monospace;margin-bottom:5px}
+.math-visual .sign-choice span{font-size:.77rem;color:#58718f}
+.math-visual .sign-choice.negative{border-color:#f0c7ce;background:#fff3f4}
+.math-visual .sign-choice.negative b{color:#b34355}
+.math-visual .sign-choice.positive{border-color:#bfe2cf;background:#e9f8f0}
+.math-visual .sign-choice.positive b{color:#1b8153}
+.math-visual svg{display:block;width:100%;height:auto;max-width:100%;overflow:visible}
+.math-visual svg text{font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+.math-visual .graph-wrap{background:white;border:1px solid #dce5f0;border-radius:11px;padding:6px;overflow:hidden}
+.math-visual .graph-wrap svg{overflow:hidden}
+.math-visual .visual-controls{display:flex;flex-wrap:wrap;gap:15px;margin:14px 0 7px;align-items:center}
+.math-visual .visual-controls label{font-size:.82rem;font-weight:800;color:#4b607d;flex:1;min-width:150px}
+.math-visual input[type="range"]{display:block;width:100%;accent-color:#285fc6;margin:8px 0 3px}
+.math-visual .readout{background:#fff;border-radius:10px;border:1px solid #dfe7f2;padding:11px 13px;font-size:.88rem;color:#234368;font-weight:750;line-height:1.55}
+.math-visual .readout strong{color:#123b78}
+.math-visual .legend{display:flex;gap:15px;align-items:center;flex-wrap:wrap;margin:12px 0 5px;color:#526984;font-size:.8rem}
+.math-visual .legend-item{display:inline-flex;gap:6px;align-items:center}
+.math-visual .dot{display:inline-block;width:11px;height:11px;border-radius:4px;flex:none}
+.math-visual .dot.positive{background:#168254}
+.math-visual .dot.negative{background:#c7475a}
+.math-visual .dot.invalid{background:repeating-linear-gradient(45deg,#cbd4e3 0 3px,#f5f6fa 3px 6px);border:1px solid #becbdd}
+.math-visual .drag-handle{cursor:ew-resize;touch-action:none}
+.math-visual .drag-handle:focus{stroke:#29456a;stroke-width:4}
+.math-visual .mini-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;margin-top:13px}
+.math-visual .mini-card{border:1px solid #dce6f4;border-radius:12px;background:#fff;padding:12px;min-width:0}
+.math-visual .mini-card strong{display:block;text-align:center;font-weight:850;color:#263e64;margin-bottom:7px}
+.math-visual .mini-card .readout{background:#f5f8ff;font-size:.73rem;padding:8px;border-color:#e7edf6;margin-top:10px;min-height:52px;overflow-wrap:anywhere}
+.math-visual .mini-card label{display:block;font-size:.74rem;color:#536785;font-weight:700;margin:10px 0 0}
+.math-visual .mini-card input[type="range"]{margin:5px 0}
+.math-visual .mapping-head{display:grid;grid-template-columns:1fr 43px 1fr;gap:8px;font-weight:900;color:#536987;font-size:.86rem;text-align:center;margin:16px 0 8px}
+.math-visual .mapping-row{display:grid;grid-template-columns:1fr 43px 1fr;gap:8px;align-items:center;max-width:530px;margin:7px auto}
+.math-visual .mapping-box{display:grid;place-items:center;background:white;border:1px solid #d2dfed;border-radius:10px;min-height:46px;color:#204b84;font-weight:850;font-size:1.12rem}
+.math-visual .mapping-box.out{color:#1e784e;background:#edf9f1;border-color:#c1e3cf}
+.math-visual .mapping-arrow{text-align:center;color:#527bb3;font-size:1.3rem;font-weight:900}
+.math-visual .visual-btn{border:1px solid #b5cae9;border-radius:10px;background:#fff;color:#2257a6;font-weight:800;padding:9px 15px;font:800 .84rem system-ui,sans-serif;cursor:pointer}
+.math-visual .visual-btn:hover,.math-visual .visual-btn[aria-pressed="true"]{background:#e6efff;border-color:#6b9ddb}
+.math-visual .visual-btn[aria-pressed="true"]{box-shadow:inset 0 0 0 1px #7eabea}
+.math-visual .visual-btn:focus-visible{outline:3px solid #81aeff;outline-offset:2px}
+.math-visual .branch-controls{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+.math-visual .dual-graphs{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.math-visual .dual-graphs>div{min-width:0;border:1px solid #dae4f2;background:white;border-radius:12px;padding:10px}
+.math-visual .dual-graphs h5{font-size:.85rem;color:#405e82;text-align:center;margin:2px 0 7px}
+.domain-summary{background:#edf5ff;border:1px solid #cbdcf5;border-radius:16px;padding:20px 22px;margin:16px 0 0}
+.domain-summary h3{margin:0 0 9px}
+.domain-summary p{font-size:.91rem;color:#475f81;margin-bottom:9px}
+.domain-summary .formula{background:#fff;border:1px solid #d7e6fb;color:#153d7d}
+.domain-summary .domain-read{font-weight:750;color:#2b5d9d}
+@media(max-width:750px){
+ .math-visual .sign-choices{grid-template-columns:1fr 1fr}
+ .math-visual .mini-grid{grid-template-columns:1fr}
+ .math-visual .mini-card{padding:14px}
+ .math-visual .mini-card svg{max-height:235px}
+ .math-visual .dual-graphs{grid-template-columns:1fr}
+ .math-visual .dual-graphs svg{max-height:285px}
+ .math-visual .visual-controls{display:block}
+ .math-visual .visual-controls label{display:block;margin-bottom:12px}
+}
+@media(prefers-reduced-motion:reduce){.math-visual *{transition:none!important}}
