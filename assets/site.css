@@ -3,6 +3,7 @@
 :root{--tut-bg:#f5f7fb;--tut-paper:#fff;--tut-ink:#1a2940;--tut-muted:#637086;--tut-border:#e0e7f0;--tut-blue:#285fc6;--tut-blue-light:#e9f0ff;--tut-shadow:0 10px 30px rgba(37,54,81,.065);--tut-radius:17px}
 body{background:var(--tut-bg);color:var(--tut-ink);font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
 .tut-sitebar,.tut-sitebar *{box-sizing:border-box}
+.tut-sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
 .tut-sitebar{background:#fff;border-bottom:1px solid var(--tut-border);position:relative;z-index:30;color:var(--tut-ink)}
 .tut-sitebar-inner{max-width:1160px;padding:14px 24px;margin:0 auto;min-height:75px;display:flex;align-items:center;gap:25px}
 .tut-site-brand{color:var(--tut-ink);text-decoration:none;display:flex;align-items:center;gap:11px;flex:none;line-height:1.25;font-size:1.07rem;font-weight:850}
