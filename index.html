@@ -3,324 +3,92 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#f7f9fc">
-<meta name="description" content="Un percorso guidato di C++: variabili, tipi, funzioni, parametri e procedure void. Mappe, codice numerato ed esercizi.">
-<title>C++ in mappe | Funzioni e procedure</title>
+<meta name="theme-color" content="#f5f7fb">
+<meta name="description" content="Materiali di ripasso organizzati per materia: informatica, matematica e futuri percorsi.">
+<title>Ripasso per materia | Tutoring</title>
 <style>
-:root{--bg:#f5f7fb;--paper:#fff;--ink:#1a2940;--muted:#637086;--stroke:#e0e7f0;--shadow:0 10px 30px rgba(37,54,81,.065);--accent:#285fc6;--accent-soft:#e9f0ff;--purple:#6549b5;--purple-soft:#f0ecff;--orange:#aa551b;--orange-soft:#fff1e5;--blue:#1667ad;--blue-soft:#e8f3ff;--green:#17744f;--green-soft:#e5f7ee;--red:#aa3447;--red-soft:#ffedf0;--code:#18253b;--code-ink:#ecf2ff;--radius:17px}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 system-ui,-apple-system,"Segoe UI",Arial,sans-serif}button,input{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid #72a0ff;outline-offset:3px}a{color:var(--accent)}p{margin:0 0 1em}h1,h2,h3{line-height:1.23;letter-spacing:-.025em}h1{font-size:clamp(2rem,4vw,3rem);margin:.2em 0 .3em}h2{font-size:clamp(1.52rem,2.6vw,2.05rem);margin:0 0 .55em}h3{font-size:1.18rem;margin:0 0 .65em}small{color:var(--muted)}code{font-family:ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",monospace;font-size:.92em}p code,li code,.tip code{padding:.13em .35em;background:#edf2f8;border-radius:6px;color:#253e63}strong{font-weight:750}
-.layout{display:grid;grid-template-columns:270px minmax(0,1fr);min-height:100vh;max-width:1640px;margin:auto}.sidebar{background:#fff;border-right:1px solid var(--stroke);position:sticky;top:0;height:100vh;display:flex;flex-direction:column;padding:25px 18px 18px;overflow:auto}.brand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:1.06rem;line-height:1.2;padding:4px 9px 18px}.logo{display:grid;place-items:center;background:#1e3556;color:#fff;border-radius:12px;width:43px;height:43px;font-family:ui-monospace,Consolas,monospace;font-size:1rem;letter-spacing:-.1em}.muted{color:var(--muted)}.eyebrow{text-transform:uppercase;letter-spacing:.13em;color:#577093;font-size:.72rem;font-weight:850}.menu-label{padding:18px 12px 8px;font-size:.72rem;letter-spacing:.12em;color:#8390a2;font-weight:800;text-transform:uppercase}.nav{display:grid;gap:6px}.nav-button{border:0;background:transparent;color:#465872;width:100%;text-align:left;padding:12px 12px;display:flex;gap:11px;align-items:center;border-radius:10px;line-height:1.28;font-weight:650}.nav-button:hover{background:#f0f4fa}.nav-button[aria-current="page"]{background:var(--accent-soft);color:#164caa}.step-num{display:grid;place-items:center;flex:none;border-radius:8px;background:#edf1f6;width:26px;height:26px;font-size:.79rem;color:#72829a;font-weight:800}.nav-button[aria-current="page"] .step-num{background:#d7e5ff;color:#1c59b5}.nav-button.done .step-num{background:#dff6e8;color:#197345}.progress-card{margin-top:auto;border:1px solid var(--stroke);border-radius:13px;padding:14px;background:#fafcff}.progress-head{display:flex;justify-content:space-between;align-items:center;font-size:.85rem;font-weight:750}.meter{height:8px;background:#e9edf4;border-radius:20px;overflow:hidden;margin:11px 0 5px}.meter>span{display:block;background:linear-gradient(90deg,#5489ec,#24a67d);height:100%;width:0;transition:width .25s}.sidebar-bottom{font-size:.77rem;padding:12px 7px 0;color:#7b899a}
-.main{min-width:0;padding:22px clamp(16px,3.8vw,65px) 65px}.topbar{height:45px;display:flex;align-items:center;justify-content:space-between;gap:14px;max-width:1010px;margin:0 auto 24px}.breadcrumbs{font-size:.78rem;color:var(--muted);font-weight:700;letter-spacing:.04em}.button[hidden]{display:none!important}.button{border:1px solid var(--stroke);background:#fff;color:var(--ink);border-radius:10px;padding:8px 13px;font-weight:700;font-size:.88rem;display:inline-flex;align-items:center;justify-content:center;gap:8px}.button:hover{border-color:#95b0db;background:#f8fbff}.button.primary{background:#285fc6;color:#fff;border-color:#285fc6}.button.primary:hover{background:#1c4eaa}.button.soft{background:var(--accent-soft);color:#174eac;border-color:transparent}.button.success{background:#e4f8eb;border-color:#afe0be;color:#166c41}.button:disabled{opacity:.45;cursor:not-allowed}.content{max-width:1010px;margin:auto}.lesson[hidden]{display:none}.hero{background:linear-gradient(125deg,#213b64,#315da0);border-radius:21px;padding:clamp(22px,4vw,44px);color:#fff;position:relative;overflow:hidden;margin-bottom:24px}.hero:after{content:"{}";font:700 140px/1 ui-monospace,Consolas,monospace;opacity:.07;position:absolute;right:5%;top:10%;transform:rotate(-15deg);pointer-events:none}.hero .eyebrow{color:#bed6ff}.hero h1{max-width:700px}.hero p{max-width:680px;color:#e3ecff;margin:0}.hero.plain{background:#fff;color:var(--ink);border:1px solid var(--stroke);box-shadow:var(--shadow)}.hero.plain .eyebrow{color:#5578ac}.hero.plain p{color:var(--muted)}.hero.plain:after{color:#315da0}.tag-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}.tag{font-size:.72rem;font-weight:750;display:inline-block;border:1px solid rgba(255,255,255,.25);padding:4px 9px;border-radius:20px;color:#f2f7ff}.hero.plain .tag{border-color:#d5e1f3;color:#4c648b}
-.card{background:var(--paper);border:1px solid var(--stroke);border-radius:var(--radius);padding:clamp(16px,2.6vw,26px);box-shadow:var(--shadow);margin:0 0 19px}.card>p:last-child{margin-bottom:0}.card.subtle{background:#fbfcfe}.card h3+ p{color:#52647f}.card-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.card-grid>.card{margin:0}.strip{border-left:5px solid var(--accent);padding:15px 19px;background:#eaf1ff;border-radius:0 12px 12px 0;margin:20px 0;color:#1c3f74}.strip.orange{border-left-color:#e39b5e;background:#fff2e7;color:#754319}.strip.green{border-left-color:#3ca879;background:#e9f8ef;color:#235c40}.strip.red{border-left-color:#d26a79;background:#fff0f2;color:#873648}.strip p:last-child{margin:0}.section-kicker{font-size:.8rem;font-weight:850;color:#647999;letter-spacing:.06em;margin:24px 0 8px;text-transform:uppercase}.section-title{margin:22px 0 15px}.flowmap{display:grid;grid-template-columns:1fr 36px 1fr 36px 1fr;align-items:stretch;gap:7px}.mapnode{border:1px solid var(--stroke);border-radius:15px;padding:17px 14px;background:#fff;text-align:center;display:flex;flex-direction:column;justify-content:center;min-height:132px;text-decoration:none;box-shadow:var(--shadow);transition:transform .15s,border-color .15s}.mapnode:hover{transform:translateY(-3px);border-color:#93b3e6}.mapnode b{font-size:.99rem;margin:5px 0}.mapnode small{line-height:1.4;font-size:.76rem}.mapicon{font-size:1.5rem;font-weight:800}.arrow{display:grid;place-items:center;font-size:1.7rem;color:#98a8bd}.two-branches{display:grid;grid-template-columns:1fr 1fr;gap:15px}.branch{border:1px solid var(--stroke);border-radius:14px;padding:19px;background:#fff}.branch .pill{margin-bottom:12px}.pill{display:inline-block;border-radius:99px;padding:4px 11px;font-size:.76rem;font-weight:800}.pill.purple{background:var(--purple-soft);color:var(--purple)}.pill.orange{background:var(--orange-soft);color:var(--orange)}.pill.blue{background:var(--blue-soft);color:var(--blue)}.pill.green{background:var(--green-soft);color:var(--green)}.pill.red{background:var(--red-soft);color:var(--red)}
-.type-row{display:grid;grid-template-columns:115px 1fr 1.1fr;gap:10px;align-items:center;padding:11px 0;border-top:1px solid var(--stroke);font-size:.91rem}.type-row:first-of-type{border-top:0}.type-name{font:750 .98rem ui-monospace,Consolas,monospace;color:var(--purple)}.type-row code{color:#3f5574;word-break:break-word}.compare-table{width:100%;border-collapse:collapse;font-size:.93rem}.compare-table th{text-align:left;color:#60738d;padding:11px;background:#f2f5fa}.compare-table td{padding:11px;border-bottom:1px solid var(--stroke);vertical-align:top}.compare-table tr:last-child td{border:0}.compare-table th:first-child{border-radius:8px 0 0 8px}.compare-table th:last-child{border-radius:0 8px 8px 0}
-.code-panel{background:var(--code);color:var(--code-ink);border-radius:13px;overflow:hidden;margin:14px 0;min-width:0}.code-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid #34435d;padding:9px 14px;color:#b3c2da;font:.76rem ui-monospace,Consolas,monospace}.copy-btn{border:1px solid #50617c;background:#2c3d58;color:#ecf2ff;padding:5px 9px;border-radius:7px;font:700 .75rem system-ui,sans-serif}.copy-btn:hover{background:#405676}.code-scroll{overflow:auto;padding:11px 0 13px}.code-lines{display:table;min-width:100%;border-spacing:0;font: .88rem/1.73 ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",monospace;tab-size:4}.code-line{display:table-row}.code-line .line-no{display:table-cell;user-select:none;text-align:right;min-width:49px;padding:0 15px 0 8px;color:#7d90ad;border-right:1px solid #34435d}.code-line .code-text{display:table-cell;padding:0 22px 0 17px;white-space:pre}.code-line.hl .code-text{background:rgba(91,148,255,.14);box-shadow:inset 3px 0 #79a7ff}.syntax-type{color:#d6b1ff}.syntax-kw{color:#ffb879}.syntax-fn{color:#80d7f3}.syntax-num{color:#ffd278}.syntax-string{color:#b8e889}.syntax-comment{color:#8ea0ba;font-style:italic}.syntax-pre{color:#ffc38c}
-.anatomy{overflow-x:auto;padding:13px 0}.signature{font:700 clamp(.89rem,1.85vw,1.28rem)/2 ui-monospace,Consolas,monospace;white-space:nowrap;display:inline-flex;align-items:center;gap:6px}.sig-piece{border-radius:9px;padding:4px 8px;display:inline-block}.sig-piece small{font:800 .7rem system-ui,sans-serif;margin:0 6px 0 0;background:#fff;border-radius:5px;padding:2px 6px}.sig-return{background:var(--purple-soft);color:var(--purple)}.sig-name{background:var(--orange-soft);color:var(--orange)}.sig-params{background:var(--blue-soft);color:var(--blue)}.sig-body{background:var(--green-soft);color:var(--green)}.anatomy-legend{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:15px 0 0}.legend-item{padding:12px;border:1px solid var(--stroke);border-radius:11px;background:#fff}.legend-item strong{display:block;margin-bottom:3px}.legend-item p{font-size:.86rem;margin:0;color:#596b84}.icon-index{display:inline-grid;place-items:center;width:25px;height:25px;border-radius:8px;font-weight:800;font-size:.79rem;margin-right:7px}.legend-purple .icon-index{color:var(--purple);background:var(--purple-soft)}.legend-orange .icon-index{color:var(--orange);background:var(--orange-soft)}.legend-blue .icon-index{color:var(--blue);background:var(--blue-soft)}.legend-green .icon-index{color:var(--green);background:var(--green-soft)}
-.trace{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:15px 0}.trace span{border:1px solid var(--stroke);padding:9px 12px;border-radius:9px;background:#fff;font-size:.83rem;font-weight:750}.trace .arr{background:transparent;border:0;color:#8ca0bb;padding:2px;font-size:1.35rem}.trace strong{color:#0d6196}.twin-code{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}.twin-code .code-panel{margin-top:6px}.twin-code .code-lines{font-size:.79rem}.twin-code>.card{min-width:0}.notice{font-size:.86rem;color:var(--muted)}
-.checklist{margin:8px 0;padding-left:23px}.checklist li{margin:9px 0}.callout-symbol{font-size:1.05rem;font-weight:900;margin-right:8px}.faq details,.exercise details{border:1px solid var(--stroke);border-radius:12px;background:#fff;margin:9px 0;overflow:hidden}.faq summary,.exercise summary{cursor:pointer;padding:13px 15px;font-weight:750;list-style:none;display:flex;justify-content:space-between;gap:12px}.faq summary::-webkit-details-marker,.exercise summary::-webkit-details-marker{display:none}.faq summary::after,.exercise summary::after{content:"＋";color:#6984ac;font-weight:850}.faq details[open] summary::after,.exercise details[open] summary::after{content:"−"}.faq details>div,.exercise details>div{padding:0 15px 14px;color:#4e617d}.example-step{display:flex;gap:12px;margin:15px 0}.round-num{display:grid;place-items:center;flex:none;width:32px;height:32px;background:#e8efff;color:#1d54b0;border-radius:10px;font-weight:850}.example-step p{margin:4px 0 0;color:#52647e}
-.sim-form{display:grid;grid-template-columns:repeat(2,1fr) auto;gap:12px;align-items:end}.sim-form label{display:grid;gap:5px;color:#52647e;font-size:.83rem;font-weight:760}.sim-form input{background:#fff;border:1px solid #bfcad9;border-radius:9px;padding:10px;width:100%;min-width:0}.sim-output{margin-top:15px;border:1px dashed #a7bad6;background:#f5f9ff;border-radius:11px;padding:16px;min-height:72px}.sim-output code{display:block;line-height:1.7}.exercise-num{color:#5674a7;font-weight:850;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:7px}.exercise{margin:16px 0;padding:20px;background:#fff;border:1px solid var(--stroke);border-radius:14px}.exercise h3{margin-bottom:8px}.exercise details>div .code-panel{margin-top:5px}.answers{display:grid;gap:14px}.quiz-card{border:1px solid var(--stroke);border-radius:14px;background:#fff;padding:18px}.quiz-card h3{font-size:1.02rem;line-height:1.5}.answers-group{display:grid;gap:8px}.answer{width:100%;border:1px solid #d5dfeb;background:#fff;color:#334966;padding:11px 12px;text-align:left;border-radius:10px;display:flex;align-items:flex-start;gap:10px;line-height:1.45}.answer:hover:not(:disabled){border-color:#739ad4;background:#f5f9ff}.answer .letter{flex:none;border-radius:6px;background:#eef2f8;font-weight:850;font-size:.78rem;width:23px;height:23px;display:grid;place-items:center}.answer.selected.good{border-color:#6fb78d;background:#e9f8ef;color:#1b6440}.answer.selected.bad{border-color:#d69aa4;background:#fff0f2;color:#8b3040}.answer.correct-unselected{border-color:#b9ddc7;border-style:dashed}.feedback{margin:12px 0 0;font-size:.86rem;font-weight:650}.feedback.good{color:#19734c}.feedback.bad{color:#a03948}.score{padding:15px;background:#eaf3ff;border-radius:12px;display:none;margin:14px 0;font-weight:750}.score.visible{display:block}.lesson-actions{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center;border-top:1px solid var(--stroke);padding:21px 0;margin-top:26px}.lesson-actions .right{display:flex;gap:10px;flex-wrap:wrap}.footnote{color:#8b98aa;font-size:.78rem;margin:12px 0 0}.hidden{display:none!important}
-@media(max-width:1030px){.layout{grid-template-columns:215px minmax(0,1fr)}.sidebar{padding:21px 10px}.main{padding:19px 19px 48px}.card-grid{gap:12px}.flowmap{grid-template-columns:1fr 25px 1fr 25px 1fr}}@media(max-width:760px){.layout{display:block}.sidebar{position:sticky;z-index:5;top:0;height:auto;overflow:visible;padding:8px 12px;border-bottom:1px solid var(--stroke);box-shadow:0 3px 16px rgba(18,33,55,.06)}.brand{padding:3px 2px 8px;font-size:.93rem}.logo{height:33px;width:33px;border-radius:9px}.menu-label,.sidebar-bottom,.progress-card{display:none}.nav{display:flex;overflow-x:auto;gap:5px;scrollbar-width:thin;padding-bottom:3px}.nav-button{min-width:max-content;padding:9px 10px;font-size:.78rem}.step-num{width:20px;height:20px;font-size:.7rem}.main{padding:14px 13px 44px}.topbar{margin-bottom:12px}.breadcrumbs{font-size:.7rem}.hero{margin-bottom:15px;border-radius:16px}.hero:after{font-size:96px;top:20%}.card{margin-bottom:13px}.card-grid,.twin-code{grid-template-columns:1fr}.flowmap{display:flex;flex-direction:column;gap:6px}.mapnode{min-height:82px}.arrow{transform:rotate(90deg)}.anatomy-legend,.two-branches{grid-template-columns:1fr}.compare-table{display:block;max-width:100%;overflow-x:auto}.compare-table th,.compare-table td{min-width:112px}.type-row{grid-template-columns:85px 1fr;gap:4px}.type-row code{grid-column:2}.sim-form{grid-template-columns:1fr 1fr}.sim-form button{grid-column:1/-1}.signature{font-size:.82rem;gap:3px}.sig-piece{padding:3px 5px}.sig-piece small{margin-right:3px;padding:1px 4px}.lesson-actions .right{width:100%}.lesson-actions .right button{flex:1}.code-lines{font-size:.79rem}.hero.plain:after{display:none}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+:root{--bg:#f5f7fb;--paper:#ffffff;--ink:#1a2940;--muted:#637086;--border:#e0e7f0;--blue:#285fc6;--blue-pale:#e9f0ff;--green:#17744f;--green-pale:#e5f7ee;--purple:#6549b5;--purple-pale:#f0ecff;--shadow:0 13px 35px rgba(37,54,81,.065)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+a{color:var(--blue);text-decoration-thickness:1px;text-underline-offset:3px}
+a:focus-visible{outline:3px solid #72a0ff;outline-offset:5px;border-radius:5px}
+.shell{max-width:1120px;margin:auto;padding:0 24px}
+header{background:rgba(255,255,255,.93);border-bottom:1px solid var(--border)}
+.header-inner{min-height:82px;display:flex;justify-content:space-between;align-items:center;gap:22px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);font-size:1.13rem;font-weight:800;line-height:1.25}
+.logo{display:grid;place-items:center;width:43px;height:43px;border-radius:13px;background:#1e3556;color:white;font:800 1.12rem ui-monospace,Consolas,monospace}
+.brand small{display:block;font-size:.73rem;color:var(--muted);font-weight:500}
+.headnav{display:flex;gap:24px;align-items:center;flex-wrap:wrap;font-size:.89rem;font-weight:700}
+.headnav a{color:#52657f;text-decoration:none}
+.headnav a:hover{color:var(--blue)}
+main{padding-bottom:60px}
+.hero{margin:36px 0 26px;background:linear-gradient(120deg,#213b64,#315da0);border-radius:22px;padding:clamp(28px,5vw,56px);color:#fff;position:relative;overflow:hidden}
+.hero:after{content:'{ }';position:absolute;right:5%;top:10%;font:800 clamp(7rem,18vw,13rem)/1 ui-monospace,Consolas,monospace;opacity:.08;transform:rotate(-18deg);pointer-events:none}
+.hero .kicker{color:#bed6ff}
+.kicker{text-transform:uppercase;letter-spacing:.14em;font-size:.75rem;font-weight:850}
+h1,h2,h3{line-height:1.25;letter-spacing:-.025em}
+h1{font-size:clamp(2.2rem,5.2vw,3.8rem);margin:13px 0 17px;max-width:790px}
+.hero p{color:#e2edff;max-width:650px;font-size:1.08rem;margin:0;line-height:1.7}
+.crumbs{margin-top:28px;display:flex;gap:9px;align-items:center;color:#7889a2;font-size:.83rem}
+.crumbs a{color:#4d6b99;text-decoration:none}
+.crumbs a:hover{text-decoration:underline}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin:39px 0 17px}
+.section-head h2{margin:3px 0 0;font-size:clamp(1.5rem,2.7vw,2rem)}
+.section-head p{color:var(--muted);margin:0;font-size:.92rem}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.card{display:flex;flex-direction:column;min-width:0;background:var(--paper);border:1px solid var(--border);border-radius:19px;padding:28px;box-shadow:var(--shadow)}
+a.card{text-decoration:none;color:var(--ink);transition:border-color .17s,transform .17s,box-shadow .17s}
+a.card:hover{border-color:#95b7ee;transform:translateY(-3px);box-shadow:0 16px 38px rgba(37,54,81,.1)}
+.card-top{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.card-symbol{display:grid;place-items:center;width:59px;height:59px;border-radius:16px;font:750 1.5rem ui-monospace,Consolas,monospace}
+.card-symbol.blue{background:var(--blue-pale);color:var(--blue)}
+.card-symbol.purple{background:var(--purple-pale);color:var(--purple)}
+.pill{display:inline-block;border-radius:100px;padding:5px 11px;font-size:.71rem;line-height:1.3;font-weight:800;white-space:nowrap}
+.pill.ready{background:var(--green-pale);color:var(--green)}
+.pill.soon{background:#eef1f6;color:#67768e}
+.card h3{font-size:1.37rem;margin:25px 0 9px}
+.card p{font-size:.96rem;line-height:1.65;color:#5b6d85;margin:0}
+.card .card-bottom{display:flex;justify-content:space-between;align-items:center;gap:12px;border-top:1px solid #e8edf4;margin-top:auto;padding-top:20px;font-weight:800;font-size:.88rem;color:var(--blue)}
+.card-bottom .subtext{color:#7b899f;font-size:.76rem;font-weight:600}
+.arrow{font-size:1.25rem}
+.feature{margin-top:18px;background:#fff;border:1px solid var(--border);border-radius:19px;padding:25px 28px;display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center}
+.feature .kicker{color:#5f78a3}
+.feature h3{font-size:1.28rem;margin:6px 0 7px}
+.feature p{color:#586b84;margin:0;max-width:710px;font-size:.91rem}
+.cta{display:inline-flex;justify-content:center;align-items:center;gap:10px;border-radius:11px;padding:11px 18px;background:var(--blue);color:#fff;text-decoration:none;font-size:.88rem;font-weight:800;white-space:nowrap}
+.cta:hover{background:#184baf}
+.cta.secondary{background:#ecf2ff;color:#2054aa}
+.cta.secondary:hover{background:#dce8ff}
+.topic-group{display:grid;gap:14px;margin-top:20px}
+.topic{display:flex;align-items:center;gap:18px;border:1px solid var(--border);background:#fff;padding:20px 23px;border-radius:17px;text-decoration:none;color:var(--ink);box-shadow:var(--shadow);transition:border-color .17s,transform .17s}
+.topic:hover{border-color:#9ebbe7;transform:translateY(-2px)}
+.topic-num{width:45px;height:45px;flex:none;display:grid;place-items:center;border-radius:12px;background:var(--blue-pale);color:var(--blue);font:800 1rem ui-monospace,monospace}
+.topic-main{flex:1;min-width:0}
+.topic h3{font-size:1.1rem;margin:0 0 5px}
+.topic p{font-size:.86rem;line-height:1.5;color:#64758c;margin:0}
+.topic .arrow{color:var(--blue)}
+.empty{background:#fff;border:1px dashed #b7c5d8;border-radius:18px;padding:30px;margin-top:23px;color:#5d6e84}
+.empty strong{display:block;color:var(--ink);font-size:1.03rem}
+.empty p{margin:6px 0 0}
+footer{border-top:1px solid var(--border);padding:22px 0 40px;color:#8290a3;font-size:.79rem}
+footer .shell{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+footer a{color:#657fa4}
+@media(max-width:710px){.shell{padding:0 16px}.header-inner{min-height:72px}.headnav{gap:13px;font-size:.8rem}.hero{margin-top:19px;border-radius:17px;padding:27px 23px}.hero:after{font-size:7rem;top:38%;right:-3%}.hero p{font-size:.98rem}.grid{grid-template-columns:1fr;gap:13px}.card{padding:23px}.card h3{margin-top:18px}.section-head{margin-top:30px;display:block}.section-head p{margin-top:7px}.feature{grid-template-columns:1fr;padding:23px}.feature .cta{justify-self:start}.topic{padding:18px 16px;gap:12px}.topic-num{height:40px;width:40px}.topic .pill{display:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}a.card,.topic{transition:none}}
 </style>
 </head>
 <body>
-<div class="layout">
-<aside class="sidebar" aria-label="Navigazione delle lezioni">
-  <div class="brand"><div class="logo" aria-hidden="true">C++</div><div>C++ in mappe <div class="muted" style="font-size:.72rem;font-weight:500">Funzioni e procedure</div></div></div>
-  <div class="menu-label">Percorso di studio</div>
-  <nav class="nav" id="nav"></nav>
-  <div class="progress-card"><div class="progress-head"><span>Lezioni completate</span><span id="progressText">0/8</span></div><div class="meter"><span id="progressBar"></span></div><small>Il progresso resta salvato su questo dispositivo.</small></div>
-  <div class="sidebar-bottom">Funziona anche senza Internet.<br>Il codice degli esempi è C++ standard.</div>
-</aside>
-<main class="main"><div class="topbar"><span class="breadcrumbs" id="crumb">PERCORSO / MAPPA</span><button class="button" id="printBtn" type="button" title="Stampa o salva come PDF">↧ Stampa scheda</button></div>
-<div class="content">
-<section class="lesson" id="lesson-mappa" data-title="La mappa" data-short="La mappa">
- <div class="hero"><div class="eyebrow">Percorso guidato · C++ base</div><h1>Dalle variabili ai sottoprogrammi</h1><p>Prima riconosci i tipi e le variabili. Poi impara a scrivere funzioni, passare parametri, usare <code>return</code> e distinguere le funzioni <code>void</code>.</p><div class="tag-row"><span class="tag">8 tappe</span><span class="tag">Codice numerato</span><span class="tag">Esercizi autocorrettivi</span></div></div>
- <div class="card"><h2>La mappa generale</h2><p>Segui il percorso da sinistra a destra: i concetti sono collegati fra loro.</p>
- <div class="flowmap"><button class="mapnode" type="button" data-go="variabili"><span class="mapicon" style="color:var(--purple)">int / float</span><b>1. Variabili e tipi</b><small>Che cosa memorizzo?</small></button><div class="arrow" aria-hidden="true">→</div><button class="mapnode" type="button" data-go="anatomia"><span class="mapicon" style="color:var(--orange)">f(x)</span><b>2. Funzioni</b><small>Che cosa calcolo?</small></button><div class="arrow" aria-hidden="true">→</div><button class="mapnode" type="button" data-go="procedure"><span class="mapicon" style="color:var(--green)">void</span><b>3. Procedure</b><small>Che cosa eseguo?</small></button></div>
- <div class="strip"><strong>Idea fondamentale:</strong> gli stessi tipi, come <code>int</code> o <code>float</code>, possono descrivere una variabile, un parametro o il risultato di una funzione. <code>void</code> significa invece che non si restituisce un valore.</div>
- <div class="two-branches"><div class="branch"><span class="pill purple">Variabile</span><code>float lato = 3;</code><p class="notice">Un dato con un tipo e un nome.</p></div><div class="branch"><span class="pill blue">Funzione</span><code>float perimetro(float lato)</code><p class="notice">Lo stesso tipo compare nel parametro e nel risultato.</p></div></div></div>
- <div class="card"><h2>Come usare questo sito</h2><div class="card-grid"><div><h3>Osserva i colori</h3><p>Ogni parte della funzione ha un colore fisso: <strong style="color:var(--purple)">tipo</strong>, <strong style="color:var(--orange)">nome</strong>, <strong style="color:var(--blue)">parametri</strong>, <strong style="color:var(--green)">corpo</strong>.</p></div><div><h3>Prova il codice</h3><p>Gli esempi sono numerati e copiabili. Nell'esercizio completo puoi inserire numeri e vedere che cosa succede passo per passo.</p></div></div></div>
- <div class="strip orange"><strong>Attenzione ai termini:</strong> a scuola si distinguono spesso <em>funzioni</em> e <em>procedure</em>. In C++ entrambe sono funzioni: una «procedura» è normalmente una funzione dichiarata <code>void</code>.</div>
-</section>
-
-<section class="lesson" id="lesson-variabili" data-title="Variabili e tipi" data-short="Variabili e tipi" hidden>
- <div class="hero plain"><div class="eyebrow">Tappa 1 di 8</div><h1>Variabili e tipi</h1><p>Il tipo indica quale genere di dato contiene una variabile. Il nome serve per ritrovarla nel programma.</p></div>
- <div class="card"><h2>Come si dichiara una variabile?</h2><div class="signature" aria-label="tipo, nome, uguale valore, punto e virgola"><span class="sig-piece sig-return"><small>1</small>float</span><span class="sig-piece sig-name"><small>2</small>lato</span><span> = 3.0f;</span></div><div class="anatomy-legend"><div class="legend-item legend-purple"><strong><span class="icon-index">1</span> Tipo</strong><p><code>float</code> indica un numero decimale.</p></div><div class="legend-item legend-orange"><strong><span class="icon-index">2</span> Nome</strong><p><code>lato</code> è il nome scelto per la variabile.</p></div></div><div class="strip green"><strong>Una sola dichiarazione nello stesso ambito:</strong> non puoi scrivere due volte <code>float lato;</code> nello stesso blocco. Puoi invece cambiarne il valore con <code>lato = 5.0f;</code>.</div></div>
- <div class="card"><h2>I tipi principali</h2><p>Tutti questi tipi possono essere usati per <strong>variabili</strong>, <strong>parametri</strong> e, quando appropriato, <strong>valori di ritorno</strong>.</p>
- <div class="type-row"><span class="type-name">int</span><span>Numero intero</span><code>int eta = 16;</code></div>
- <div class="type-row"><span class="type-name">float</span><span>Numero decimale</span><code>float lato = 3.5f;</code></div>
- <div class="type-row"><span class="type-name">double</span><span>Decimale con più precisione</span><code>double prezzo = 12.75;</code></div>
- <div class="type-row"><span class="type-name">bool</span><span>Vero o falso</span><code>bool acceso = true;</code></div>
- <div class="type-row"><span class="type-name">char</span><span>Un carattere</span><code>char iniziale = 'A';</code></div>
- <div class="type-row"><span class="type-name">string</span><span>Testo</span><code>string nome = "Luca";</code></div>
- <div class="strip"><code>string</code> richiede <code>#include &lt;string&gt;</code> e, negli esempi, <code>using namespace std;</code> oppure il nome completo <code>std::string</code>. Le stringhe usano doppi apici; i <code>char</code> apici singoli.</div></div>
- <div class="card"><h2>Dichiarazioni e assegnazioni</h2><div class="code-mount" data-code="variabili"></div><p>La virgola consente di dichiarare più variabili dello stesso tipo. Per iniziare è spesso più leggibile scriverne una per riga.</p></div>
- <div class="card"><h2>Il collegamento con le funzioni</h2><div class="compare-table-wrap"><table class="compare-table"><thead><tr><th>Ruolo</th><th>Esempio</th><th>Che cosa significa</th></tr></thead><tbody><tr><td>Variabile</td><td><code>float lato;</code></td><td>Conserva un numero.</td></tr><tr><td>Parametro</td><td><code>float lato</code></td><td>Riceve un numero quando chiami la funzione.</td></tr><tr><td>Risultato</td><td><code>float perimetro(...)</code></td><td>La funzione restituisce un numero.</td></tr></tbody></table></div></div>
-</section>
-
-<section class="lesson" id="lesson-anatomia" data-title="Le 4 parti della funzione" data-short="Le 4 parti" hidden>
- <div class="hero plain"><div class="eyebrow">Tappa 2 di 8</div><h1>Le 4 parti di una funzione</h1><p>Una funzione è un blocco di codice con un nome: quando la chiami, esegue un compito.</p></div>
- <div class="card"><h2>Impara a riconoscerle</h2><div class="anatomy"><div class="signature"><span class="sig-piece sig-return"><small>1</small>float</span><span class="sig-piece sig-name"><small>2</small>perimetro</span><span class="sig-piece sig-params"><small>3</small>(float lato)</span><span class="sig-piece sig-body"><small>4</small>{ ... }</span></div></div>
- <div class="anatomy-legend"><div class="legend-item legend-purple"><strong><span class="icon-index">1</span> Tipo restituito</strong><p>Che tipo di valore arriva all'esterno: qui <code>float</code>.</p></div><div class="legend-item legend-orange"><strong><span class="icon-index">2</span> Nome</strong><p>Serve a chiamare la funzione: <code>perimetro</code>.</p></div><div class="legend-item legend-blue"><strong><span class="icon-index">3</span> Parametri formali</strong><p>Sono gli ingressi, indicati come <code>tipo nome</code>, separati da virgole.</p></div><div class="legend-item legend-green"><strong><span class="icon-index">4</span> Corpo</strong><p>È il codice tra <code>{</code> e <code>}</code>; se necessario usa <code>return</code>.</p></div></div></div>
- <div class="card"><h2>Esempio: perimetro di un triangolo equilatero</h2><div class="code-mount" data-code="perimetro"></div><div class="trace"><span>Chiamata: <code>perimetro(4.0f)</code></span><span class="arr">→</span><span><code>lato = 4</code></span><span class="arr">→</span><span><code>return 4 * 3</code></span><span class="arr">→</span><span><strong>12</strong></span></div><div class="strip green"><code>return</code> restituisce un valore alla parte di programma che ha chiamato la funzione. Non lo stampa automaticamente.</div></div>
- <div class="card"><h2>Posso usare altri tipi?</h2><p>Sì. Il tipo scritto prima del nome dice quale valore restituirà la funzione.</p><div class="code-mount" data-code="tipiFunzioni"></div><p class="notice">Nota: <code>string</code> è un tipo della libreria standard; <code>void</code> è utilizzato per funzioni che non restituiscono un valore.</p></div>
-</section>
-
-<section class="lesson" id="lesson-parametri" data-title="Parametri e chiamate" data-short="Parametri e chiamate" hidden>
- <div class="hero plain"><div class="eyebrow">Tappa 3 di 8</div><h1>Parametri formali e argomenti</h1><p>La funzione definisce quali dati ricevere. La chiamata fornisce i valori effettivi.</p></div>
- <div class="card"><h2>Due nomi diversi per due ruoli</h2><div class="two-branches"><div class="branch"><span class="pill blue">Nella definizione</span><div><code>float perimetro(float lato)</code></div><p class="notice"><code>lato</code> è il <strong>parametro formale</strong>.</p></div><div class="branch"><span class="pill orange">Nella chiamata</span><div><code>perimetro(5.0f)</code></div><p class="notice"><code>5.0f</code> è l'<strong>argomento</strong> (o parametro attuale).</p></div></div>
- <div class="trace"><span>Argomento <code>5.0f</code></span><span class="arr">→</span><span>Parametro <code>lato</code> riceve 5</span><span class="arr">→</span><span>Risultato <code>15</code></span></div>
- <p>Nel normale <strong>passaggio per valore</strong>, una copia del valore dell'argomento viene assegnata al parametro: modificare il parametro non modifica la variabile originale.</p></div>
- <div class="card"><h2>Da zero a più parametri</h2><div class="code-mount" data-code="parametri"></div><div class="strip"><strong>Regola:</strong> nella definizione ogni parametro richiede il suo tipo: <code>int somma(int a, int b)</code> è corretto; <code>int somma(int a, b)</code> non lo è.</div></div>
- <div class="card"><h2>Dove scrivo la funzione?</h2><p>Puoi <strong>definirla prima di <code>main</code></strong>, oppure scrivere il <strong>prototipo</strong> prima di <code>main</code> e la definizione dopo.</p><div class="code-mount" data-code="prototipo"></div><p><strong>Prototipo:</strong> termina con <code>;</code> e non contiene il corpo. <strong>Definizione:</strong> contiene <code>{ ... }</code>.</p></div>
-</section>
-
-<section class="lesson" id="lesson-procedure" data-title="Funzioni e procedure" data-short="Funzioni e void" hidden>
- <div class="hero plain"><div class="eyebrow">Tappa 4 di 8</div><h1>Funzione o «procedura»?</h1><p>Nella terminologia scolastica una funzione restituisce un valore, mentre una procedura esegue azioni. In C++ la «procedura» si scrive come funzione <code>void</code>.</p></div>
- <div class="twin-code"><div class="card"><span class="pill purple">Restituisce un valore</span><h3>Funzione <code>float</code></h3><div class="code-mount" data-code="soloFunzione"></div><p class="notice">Puoi usare il risultato in una variabile o in un'espressione.</p></div><div class="card"><span class="pill green">Non restituisce valori</span><h3>Funzione <code>void</code></h3><div class="code-mount" data-code="soloProcedura"></div><p class="notice">Stampa direttamente il risultato. Non può essere usata come se producesse un numero.</p></div></div>
- <div class="card"><h2>Qual è la differenza vera?</h2><table class="compare-table"><thead><tr><th></th><th>Funzione con risultato</th><th>Funzione <code>void</code></th></tr></thead><tbody><tr><td>Tipo</td><td><code>float</code>, <code>int</code>, ...</td><td><code>void</code></td></tr><tr><td>Risultato con <code>return</code></td><td>Restituisce il valore</td><td>Non restituisce un valore</td></tr><tr><td>Può usare <code>cout</code>?</td><td>Sì</td><td>Sì</td></tr><tr><td>Può avere parametri?</td><td>Sì, anche zero</td><td>Sì, anche zero</td></tr><tr><td>Chiamata tipica</td><td><code>float p = perimetro(3);</code></td><td><code>stampaPerimetro(3);</code></td></tr></tbody></table></div>
- <div class="strip orange"><strong>Due precisazioni importanti.</strong> Una funzione <code>void</code> può contenere <code>return;</code> senza valore, per interrompere l'esecuzione: non è obbligatorio. E «una funzione ha sempre un solo output» è solo una semplificazione iniziale: in C++ esistono anche i riferimenti e altri modi per produrre più risultati.</div>
- <div class="card faq"><h2>Domande frequenti</h2><details><summary>Una funzione <code>float</code> può stampare con <code>cout</code>?</summary><div>Sì. Il tipo di ritorno dice soltanto quale valore viene restituito con <code>return</code>. Stampare ed effettuare un <code>return</code> sono azioni diverse.</div></details><details><summary>Una funzione <code>void</code> può calcolare qualcosa?</summary><div>Sì. Può usare variabili locali e fare calcoli, ma non restituisce direttamente il risultato come valore. Può, per esempio, visualizzarlo con <code>cout</code>.</div></details><details><summary>Posso scrivere <code>float x = stampaPerimetro(3);</code>?</summary><div>No, se <code>stampaPerimetro</code> è <code>void</code>: la chiamata non produce un valore assegnabile a <code>x</code>.</div></details></div>
-</section>
-
-<section class="lesson" id="lesson-completo" data-title="Due funzioni e una procedura" data-short="Esercizio completo" hidden>
- <div class="hero plain"><div class="eyebrow">Tappa 5 di 8</div><h1>2 funzioni + 1 procedura</h1><p>Un programma completo: leggi base e altezza di un rettangolo, calcola area e perimetro, poi visualizzali.</p></div>
- <div class="card"><h2>Prima la mappa, poi il codice</h2><div class="flowmap"><div class="mapnode"><span class="mapicon" style="color:var(--blue)">cin</span><b>main</b><small>Legge base e altezza</small></div><div class="arrow">→</div><div class="mapnode"><span class="mapicon" style="color:var(--purple)">2 × double</span><b>Due funzioni</b><small>Restituiscono area e perimetro</small></div><div class="arrow">→</div><div class="mapnode"><span class="mapicon" style="color:var(--green)">void</span><b>Una procedura</b><small>Stampa i risultati</small></div></div>
- <div class="card-grid" style="margin-top:16px"><div><span class="pill purple">Funzione 1</span><div><code>double areaRettangolo(double base, double altezza)</code></div></div><div><span class="pill purple">Funzione 2</span><div><code>double perimetroRettangolo(double base, double altezza)</code></div></div><div><span class="pill green">Procedura</span><div><code>void mostraRisultati(double area, double perimetro)</code></div></div><div><span class="pill blue">Main</span><div>Chiama prima le due funzioni, poi la procedura.</div></div></div></div>
- <div class="card"><h2>Codice completo, numerato</h2><p>Puoi copiare questo esempio in un compilatore C++: è un programma completo.</p><div class="code-mount" data-code="completo"></div><div class="strip green"><strong>Ordine delle operazioni:</strong> <code>cin</code> legge → le due funzioni usano <code>return</code> → <code>main</code> memorizza i due risultati → la funzione <code>void</code> li stampa.</div></div>
- <div class="card"><h2>Simula l'esecuzione</h2><p>Inserisci base e altezza. Il sito riproduce i calcoli e la stampa che eseguirebbe il programma (non compila C++ nel browser).</p><form class="sim-form" id="simForm"><label>Base <input id="baseInput" type="number" step="any" min="0" value="5" required></label><label>Altezza <input id="altezzaInput" type="number" step="any" min="0" value="3" required></label><button class="button primary" type="submit">▶ Esegui simulazione</button></form><div class="sim-output" id="simOutput" aria-live="polite">Premi «Esegui simulazione».</div></div>
- <div class="card"><h2>Segui ogni chiamata</h2><div class="example-step"><div class="round-num">1</div><div><strong>Parametri attuali</strong><p>Le variabili <code>base</code> e <code>altezza</code> di <code>main</code> diventano argomenti delle chiamate.</p></div></div><div class="example-step"><div class="round-num">2</div><div><strong>Parametri formali</strong><p>Le funzioni ricevono le copie dei valori nei rispettivi parametri <code>base</code> e <code>altezza</code>.</p></div></div><div class="example-step"><div class="round-num">3</div><div><strong>Valori restituiti</strong><p>I due <code>return</code> producono i numeri salvati in <code>area</code> e <code>perimetro</code> dentro <code>main</code>.</p></div></div><div class="example-step"><div class="round-num">4</div><div><strong>Visualizzazione</strong><p><code>mostraRisultati(area, perimetro)</code> riceve i valori e li stampa tramite <code>cout</code>.</p></div></div></div>
-</section>
-
-<section class="lesson" id="lesson-errori" data-title="Ambito ed errori comuni" data-short="Errori e scope" hidden>
- <div class="hero plain"><div class="eyebrow">Tappa 6 di 8</div><h1>Ambito delle variabili ed errori comuni</h1><p>Per usare bene i sottoprogrammi devi sapere dove esistono le variabili e cosa aspettarsi da <code>return</code>.</p></div>
- <div class="card"><h2>Una variabile «vive» nel proprio ambito</h2><div class="code-mount" data-code="scope"></div><p>Le due variabili chiamate <code>risultato</code> non sono la stessa variabile: una appartiene a <code>quadrato</code>, l'altra a <code>main</code>.</p><div class="strip red"><strong>Errore:</strong> non puoi usare da <code>main</code> una variabile locale dichiarata dentro <code>quadrato</code>. Devi passare i dati con i parametri e ottenere il risultato con <code>return</code>.</div></div>
- <div class="card faq"><h2>Quattro errori da evitare</h2><details><summary>1. Dimenticare il tipo di un parametro</summary><div><p>Non scrivere <code>int somma(int a, b)</code>. Scrivi <code>int somma(int a, int b)</code>.</p></div></details><details><summary>2. Restituire un numero da una funzione <code>void</code></summary><div><p><code>return 5;</code> non è valido in una funzione <code>void</code>. Puoi scrivere <code>return;</code> oppure ometterlo.</p></div></details><details><summary>3. Confondere stampare e restituire</summary><div><p><code>cout &lt;&lt; area;</code> visualizza un valore. <code>return area;</code> lo rimanda al chiamante. Non sono la stessa cosa.</p></div></details><details><summary>4. Dimenticare il punto e virgola nel prototipo</summary><div><p>Prototipo: <code>int triplo(int n);</code> (con <code>;</code>). Definizione: <code>int triplo(int n) { return n * 3; }</code> (senza <code>;</code> dopo la firma).</p></div></details></div>
- <div class="card"><h2>Promemoria: controlla queste 5 cose</h2><ol class="checklist"><li>Ho scritto il <strong>tipo</strong> prima del nome della funzione?</li><li>Ogni parametro formale ha <strong>tipo e nome</strong>?</li><li>Le istruzioni sono dentro le <strong>graffe</strong>?</li><li>Se la funzione deve restituire un risultato, uso <strong><code>return valore;</code></strong>?</li><li>La funzione è <strong>definita o dichiarata</strong> prima della chiamata?</li></ol></div>
-</section>
-
-<section class="lesson" id="lesson-esercizi" data-title="Esercizi guidati" data-short="Esercizi guidati" hidden>
- <div class="hero plain"><div class="eyebrow">Tappa 7 di 8</div><h1>Prova da solo</h1><p>Rispondi prima di aprire le soluzioni. Gli esercizi riprendono il modo in cui hai schematizzato i concetti sul foglio.</p></div>
- <div class="exercise"><div class="exercise-num">Esercizio 1 · Riconoscimento</div><h3>Indica le 4 parti della seguente funzione</h3><div class="code-mount" data-code="esercizio1"></div><p>Trova: (1) tipo restituito, (2) nome, (3) parametri formali, (4) corpo.</p><details><summary>Mostra la soluzione</summary><div><p><strong>1</strong> <code>int</code> · <strong>2</strong> <code>triplo</code> · <strong>3</strong> <code>(int numero)</code> · <strong>4</strong> <code>{ return numero * 3; }</code>.</p></div></details></div>
- <div class="exercise"><div class="exercise-num">Esercizio 2 · Traccia</div><h3>Che valore viene stampato?</h3><div class="code-mount" data-code="esercizio2"></div><details><summary>Mostra la soluzione</summary><div><p>Stampa <strong>18</strong>: <code>triplo(6)</code> restituisce <code>6 * 3</code>. La stampa avviene in <code>main</code>, non dentro <code>triplo</code>.</p></div></details></div>
- <div class="exercise"><div class="exercise-num">Esercizio 3 · Scrittura</div><h3>Scrivi una procedura che stampa il doppio di un intero</h3><p>La procedura si deve chiamare <code>stampaDoppio</code> e ricevere un parametro <code>int numero</code>. Non deve restituire valori.</p><details><summary>Mostra la soluzione</summary><div><div class="code-mount" data-code="esercizio3"></div><p>Il tipo di ritorno è <code>void</code>; il tipo del parametro è <code>int</code>.</p></div></details></div>
- <div class="exercise"><div class="exercise-num">Esercizio 4 · Progetto</div><h3>Costruisci un programma con 2 funzioni e 1 procedura</h3><p>Leggi un numero intero, calcola con due funzioni il suo <strong>doppio</strong> e il suo <strong>triplo</strong>, poi stampali usando una procedura <code>void</code>.</p><details><summary>Mostra una possibile soluzione</summary><div><div class="code-mount" data-code="esercizio4"></div></div></details></div>
-</section>
-
-<section class="lesson" id="lesson-quiz" data-title="Verifica finale" data-short="Verifica finale" hidden>
- <div class="hero plain"><div class="eyebrow">Tappa 8 di 8</div><h1>Verifica quello che hai capito</h1><p>Otto domande, correzione immediata e spiegazione. Il risultato non richiede registrazione.</p></div>
- <div id="quizContainer" class="answers"></div><div class="score" id="quizScore" aria-live="polite"></div><button type="button" class="button" id="quizReset">↻ Ricomincia la verifica</button>
-</section>
-
-<div class="lesson-actions"><button type="button" class="button" id="prevBtn">← Precedente</button><div class="right"><button type="button" class="button soft" id="doneBtn">✓ Segna come studiata</button><button type="button" class="button primary" id="nextBtn">Successiva →</button></div></div>
-<p class="footnote">Materiale didattico per lo studio guidato di C++ · I progressi e le risposte alla verifica restano nel browser. Nessun dato viene inviato online.</p>
-</div></main></div>
-<script>
-'use strict';
-const lessons=[...document.querySelectorAll('.lesson')];
-const nav=document.getElementById('nav');
-const safeStorage={get(k){try{return localStorage.getItem(k)}catch{return null}},set(k,v){try{localStorage.setItem(k,v)}catch{}}};
-const storeKey='cpp-mappe-progress-v1';
-let completed=new Set(JSON.parse(safeStorage.get(storeKey)||'[]').filter(x=>x!=='mappa'&&lessons.some(y=>y.id==='lesson-'+x)));
-let current='mappa';
-const snippets={
- variabili:{title:'Dichiarazioni e assegnazioni',code:String.raw`#include <iostream>
-#include <string>
-using namespace std;
-
-int main() {
-    float a = 1.0f, b = 2.0f, c = 3.0f;
-    int eta = 16;
-    string nome = "Luca";
-
-    c = a + b;   // assegnazione: non ridichiaro c
-    cout << nome << ": " << c << '\n';
-    return 0;
-}`,hl:[5,9]},
- perimetro:{title:'Funzione e chiamata',code:String.raw`#include <iostream>
-using namespace std;
-
-float perimetro(float lato) {
-    return lato * 3;
-}
-
-int main() {
-    float p = perimetro(4.0f);
-    cout << p << '\n';
-    return 0;
-}`,hl:[4,5,9]},
- tipiFunzioni:{title:'Il tipo restituito cambia, la struttura no',code:String.raw`int doppio(int n) {
-    return n * 2;
-}
-
-bool maggioreDiZero(int n) {
-    return n > 0;
-}
-
-double meta(double n) {
-    return n / 2;
-}`,hl:[1,5,9]},
- parametri:{title:'Zero, uno o due parametri',code:String.raw`int costante() {           // zero parametri
-    return 10;
-}
-
-int doppio(int numero) {  // un parametro
-    return numero * 2;
-}
-
-int somma(int a, int b) { // due parametri
-    return a + b;
-}
-
-// Chiamate possibili:
-// costante()   doppio(7)   somma(3, 4)`,hl:[1,5,9]},
- prototipo:{title:'Prototipo, main, definizione',code:String.raw`#include <iostream>
-using namespace std;
-
-int triplo(int n);  // prototipo
-
-int main() {
-    cout << triplo(4) << '\n';
-    return 0;
-}
-
-int triplo(int n) {  // definizione
-    return n * 3;
-}`,hl:[4,7,11]},
- soloFunzione:{title:'float: restituisce',code:String.raw`float perimetro(float lato) {
-    return lato * 3;
-}
-
-// Uso:
-float p = perimetro(4.0f);
-cout << p;`,hl:[1,2,6]},
- soloProcedura:{title:'void: stampa',code:String.raw`void stampaPerimetro(float lato) {
-    cout << lato * 3;
-}
-
-// Uso:
-stampaPerimetro(4.0f);`,hl:[1,2,6]},
- completo:{title:'Programma completo e compilabile',code:String.raw`#include <iostream>
-using namespace std;
-
-// PROTOTIPI
-// Funzione 1
- double areaRettangolo(double base, double altezza);
-// Funzione 2
- double perimetroRettangolo(double base, double altezza);
-// Procedura (funzione void)
- void mostraRisultati(double area, double perimetro);
-
-int main() {
-    double base, altezza;
-    cout << "Base: ";
-    cin >> base;
-    cout << "Altezza: ";
-    cin >> altezza;
-
-    double area = areaRettangolo(base, altezza);
-    double perimetro = perimetroRettangolo(base, altezza);
-    mostraRisultati(area, perimetro);
-    return 0;
-}
-
-// DEFINIZIONE DELLA FUNZIONE 1
- double areaRettangolo(double base, double altezza) {
-    return base * altezza;
-}
-
-// DEFINIZIONE DELLA FUNZIONE 2
- double perimetroRettangolo(double base, double altezza) {
-    return 2 * (base + altezza);
-}
-
-// DEFINIZIONE DELLA PROCEDURA
- void mostraRisultati(double area, double perimetro) {
-    cout << "Area: " << area << '\n';
-    cout << "Perimetro: " << perimetro << '\n';
-}`,hl:[6,8,10,19,20,21,27,32,37]},
- scope:{title:'Una variabile locale per ogni ambito',code:String.raw`#include <iostream>
-using namespace std;
-
-int quadrato(int n) {
-    int risultato = n * n; // locale a quadrato
-    return risultato;
-}
-
-int main() {
-    int risultato = quadrato(4); // locale a main
-    cout << risultato << '\n';
-    return 0;
-}`,hl:[5,6,10]},
- esercizio1:{title:'Riconosci le quattro parti',code:String.raw`int triplo(int numero) {
-    return numero * 3;
-}`,hl:[1,2]},
- esercizio2:{title:'Individua la stampa',code:String.raw`int triplo(int numero) {
-    return numero * 3;
-}
-
-int main() {
-    cout << triplo(6);
-    return 0;
-}`,hl:[2,6]},
- esercizio3:{title:'Soluzione: procedura',code:String.raw`#include <iostream>
-using namespace std;
-
-void stampaDoppio(int numero) {
-    cout << numero * 2 << '\n';
-}`,hl:[4,5]},
- esercizio4:{title:'Soluzione possibile',code:String.raw`#include <iostream>
-using namespace std;
-
-int doppio(int n) { return n * 2; }
-int triplo(int n) { return n * 3; }
-
-void mostra(int d, int t) {
-    cout << "Doppio: " << d << '\n';
-    cout << "Triplo: " << t << '\n';
-}
-
-int main() {
-    int n;
-    cin >> n;
-    int d = doppio(n);
-    int t = triplo(n);
-    mostra(d, t);
-    return 0;
-}`,hl:[4,5,7,15,16,17]}
-};
-function escapeHTML(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
-const tokenReg=/(\/\/.*$|"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|#include|\b(?:int|float|double|bool|char|void|string|return|if|else|true|false|const|using|namespace)\b|\b(?:std|cout|cin|endl)\b|\b\d+(?:\.\d+)?f?\b|\b[A-Za-z_]\w*(?=\s*\())/gm;
-function highlight(line){let out='',last=0;tokenReg.lastIndex=0;for(const m of line.matchAll(tokenReg)){const t=m[0];out+=escapeHTML(line.slice(last,m.index));let c=t.startsWith('//')?'syntax-comment':t.startsWith('"')||t.startsWith("'")?'syntax-string':t==='#include'?'syntax-pre':/^(int|float|double|bool|char|void|string)$/.test(t)?'syntax-type':/^(return|if|else|true|false|const|using|namespace)$/.test(t)?'syntax-kw':/^(std|cout|cin|endl)$/.test(t)?'syntax-pre':/^\d/.test(t)?'syntax-num':'syntax-fn';out+='<span class="'+c+'">'+escapeHTML(t)+'</span>';last=m.index+t.length;if(t.startsWith('//'))break}return out+escapeHTML(line.slice(last));}
-function codePanel(key){const obj=snippets[key];if(!obj)return document.createTextNode('');const wrap=document.createElement('div');wrap.className='code-panel';const bar=document.createElement('div');bar.className='code-toolbar';const label=document.createElement('span');label.textContent=obj.title;const btn=document.createElement('button');btn.type='button';btn.className='copy-btn';btn.textContent='Copia codice';btn.addEventListener('click',async()=>{let copied=false;try{await navigator.clipboard.writeText(obj.code);copied=true}catch{const a=document.createElement('textarea');a.value=obj.code;a.style.position='fixed';a.style.left='-9999px';document.body.appendChild(a);a.select();try{copied=document.execCommand('copy')}catch{}a.remove()}btn.textContent=copied?'✓ Copiato':'Seleziona manualmente';setTimeout(()=>btn.textContent='Copia codice',2000)});bar.append(label,btn);const scroller=document.createElement('div');scroller.className='code-scroll';const lines=document.createElement('div');lines.className='code-lines';obj.code.replace(/\n$/,'').split('\n').forEach((line,index)=>{let n=index+1;const row=document.createElement('div');row.className='code-line'+(obj.hl.includes(n)?' hl':'');const gutter=document.createElement('span');gutter.className='line-no';gutter.textContent=n;const code=document.createElement('span');code.className='code-text';code.innerHTML=highlight(line)||' ';row.append(gutter,code);lines.append(row)});scroller.append(lines);wrap.append(bar,scroller);return wrap}
-document.querySelectorAll('[data-code]').forEach(el=>el.append(codePanel(el.dataset.code)));
-function buildNav(){nav.innerHTML='';lessons.forEach((lesson,i)=>{const id=lesson.id.replace('lesson-','');const b=document.createElement('button');b.type='button';b.className='nav-button'+(completed.has(id)?' done':'');b.setAttribute('aria-current',id===current?'page':'false');const n=document.createElement('span');n.className='step-num';n.textContent=i===0?'◇':(completed.has(id)?'✓':String(i));const label=document.createElement('span');label.textContent=lesson.dataset.short;b.append(n,label);b.addEventListener('click',()=>go(id));nav.append(b)})}
-function updateProgress(){document.getElementById('progressText').textContent=completed.size+'/'+(lessons.length-1);document.getElementById('progressBar').style.width=String(100*completed.size/(lessons.length-1))+'%';const done=completed.has(current);document.getElementById('doneBtn').hidden=current==='mappa';document.getElementById('doneBtn').className='button '+(done?'success':'soft');document.getElementById('doneBtn').textContent=done?'✓ Studiata (annulla)':'✓ Segna come studiata'}
-function go(id){const n=lessons.findIndex(x=>x.id==='lesson-'+id);if(n<0)return;current=id;lessons.forEach((lesson,i)=>lesson.hidden=i!==n);buildNav();updateProgress();document.getElementById('crumb').textContent='PERCORSO / '+lessons[n].dataset.title.toUpperCase();document.getElementById('prevBtn').disabled=n===0;document.getElementById('nextBtn').disabled=n===lessons.length-1;document.getElementById('nextBtn').textContent=n===lessons.length-1?'Fine percorso':'Successiva →';history.replaceState(null,'','#'+id);window.scrollTo({top:0,behavior:'instant'})}
-document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>go(b.dataset.go)));
-document.getElementById('prevBtn').addEventListener('click',()=>go(lessons[Math.max(0,lessons.findIndex(x=>x.id==='lesson-'+current)-1)].id.replace('lesson-','')));
-document.getElementById('nextBtn').addEventListener('click',()=>go(lessons[Math.min(lessons.length-1,lessons.findIndex(x=>x.id==='lesson-'+current)+1)].id.replace('lesson-','')));
-document.getElementById('doneBtn').addEventListener('click',()=>{completed.has(current)?completed.delete(current):completed.add(current);safeStorage.set(storeKey,JSON.stringify([...completed]));buildNav();updateProgress()});
-document.getElementById('printBtn').addEventListener('click',()=>window.print());
-const fmt=n=>Number(n.toFixed(9)).toLocaleString('it-IT',{maximumFractionDigits:9});
-document.getElementById('simForm').addEventListener('submit',e=>{e.preventDefault();const base=Number(document.getElementById('baseInput').value),altezza=Number(document.getElementById('altezzaInput').value);const out=document.getElementById('simOutput');out.textContent='';if(!Number.isFinite(base)||!Number.isFinite(altezza)||base<0||altezza<0){out.textContent='Inserisci due numeri non negativi.';return}const area=base*altezza,per=2*(base+altezza);const steps=[`1 · main legge: base = ${fmt(base)}; altezza = ${fmt(altezza)}`,`2 · areaRettangolo(${fmt(base)}, ${fmt(altezza)}) restituisce ${fmt(area)}`,`3 · perimetroRettangolo(${fmt(base)}, ${fmt(altezza)}) restituisce ${fmt(per)}`,`4 · mostraRisultati(${fmt(area)}, ${fmt(per)}) stampa:`,`     Area: ${fmt(area)}`,`     Perimetro: ${fmt(per)}`];for(const s of steps){let code=document.createElement('code');code.textContent=s;out.append(code)}});
-const questions=[
- {q:'In <code>float lato = 3.5f;</code>, che cosa rappresenta <code>float</code>?',choices:['Il nome della variabile','Il tipo della variabile','Il valore restituito'],correct:1,why:'Il tipo è float; lato è il nome; 3.5f è il valore iniziale.'},
- {q:'Che cosa significa il primo <code>int</code> di <code>int doppio(int numero)</code>?',choices:['La funzione restituisce un int','La funzione ha un solo parametro','Il numero deve essere positivo'],correct:0,why:'Il tipo prima del nome della funzione indica il tipo del risultato restituito.'},
- {q:'Quanti parametri formali ci sono in <code>double area(double b, double h)</code>?',choices:['Zero','Uno','Due'],correct:2,why:'b e h sono due parametri, ciascuno dichiarato con il tipo double.'},
- {q:'Nella chiamata <code>perimetro(5.0f)</code>, <code>5.0f</code> è...',choices:['Un argomento attuale','Il nome della funzione','Un tipo di dato'],correct:0,why:'5.0f è l’argomento: viene passato al parametro formale della funzione.'},
- {q:'Che cosa fa <code>return numero * 3;</code>?',choices:['Stampa il risultato','Restituisce il risultato al chiamante','Dichiara una variabile'],correct:1,why:'return restituisce il valore; non è un comando di stampa.'},
- {q:'In C++, una «procedura» viene normalmente scritta come...',choices:['Una funzione void','Una funzione int','Una variabile senza tipo'],correct:0,why:'Procedura è un nome didattico: in C++ il sottoprogramma è una funzione void.'},
- {q:'Quale <code>return</code> è consentito in una funzione <code>void</code>?',choices:['return 10;','return;','return "ciao";'],correct:1,why:'return; può uscire dalla funzione senza restituire valori.'},
- {q:'Che cosa indica il prototipo <code>int triplo(int n);</code>?',choices:['Esegue subito triplo','Dichiara firma e tipo della funzione','Stampa triplo'],correct:1,why:'Il prototipo informa il compilatore della firma della funzione; la definizione con il corpo può venire dopo.'}
-];
-const quizKey='cpp-mappe-quiz-v1';let quizAnswers=JSON.parse(safeStorage.get(quizKey)||'{}');
-function drawQuiz(){const target=document.getElementById('quizContainer');target.textContent='';questions.forEach((q,i)=>{const card=document.createElement('div');card.className='quiz-card';const kicker=document.createElement('div');kicker.className='exercise-num';kicker.textContent='Domanda '+(i+1)+' di '+questions.length;const title=document.createElement('h3');title.innerHTML=q.q;const group=document.createElement('div');group.className='answers-group';q.choices.forEach((choice,j)=>{const b=document.createElement('button');b.type='button';b.className='answer';if(Object.prototype.hasOwnProperty.call(quizAnswers,i)){b.disabled=true;if(quizAnswers[i]===j)b.className+=' selected '+(j===q.correct?'good':'bad');else if(j===q.correct)b.className+=' correct-unselected'}const letter=document.createElement('span');letter.className='letter';letter.textContent=String.fromCharCode(65+j);const txt=document.createElement('span');txt.textContent=choice;b.append(letter,txt);b.addEventListener('click',()=>{quizAnswers[i]=j;safeStorage.set(quizKey,JSON.stringify(quizAnswers));drawQuiz()});group.append(b)});card.append(kicker,title,group);if(Object.prototype.hasOwnProperty.call(quizAnswers,i)){const feedback=document.createElement('p');feedback.className='feedback '+(quizAnswers[i]===q.correct?'good':'bad');feedback.textContent=(quizAnswers[i]===q.correct?'✓ Corretto. ':'✗ Da ripassare. ')+q.why;card.append(feedback)}target.append(card)});const count=Object.keys(quizAnswers).filter(k=>+k>=0&&+k<questions.length).length;const score=questions.reduce((s,q,i)=>s+(quizAnswers[i]===q.correct?1:0),0);const out=document.getElementById('quizScore');out.classList.toggle('visible',count===questions.length);if(count===questions.length)out.textContent=`Risultato: ${score}/${questions.length} risposte corrette. ${score===questions.length?'Ottimo: tutti i concetti principali sono chiari.':'Rileggi le spiegazioni delle risposte sbagliate, poi riprova.'}`}
-document.getElementById('quizReset').addEventListener('click',()=>{quizAnswers={};safeStorage.set(quizKey,'{}');drawQuiz()});
-window.addEventListener('hashchange',()=>{const id=location.hash.slice(1);if(lessons.some(x=>x.id==='lesson-'+id))go(id)});
-window.addEventListener('beforeprint',()=>{lessons.forEach(l=>l.hidden=false)});
-window.addEventListener('afterprint',()=>go(current));
-(function addPrintStyle(){const s=document.createElement('style');s.textContent='@media print{body{background:white}.layout{display:block}.sidebar,.topbar,.lesson-actions,.footnote,.copy-btn,.sim-form,#quizReset{display:none!important}.main{padding:0}.content{max-width:none}.lesson,.lesson[hidden]{display:block!important;break-before:page}.lesson:first-child{break-before:auto}.hero{print-color-adjust:exact;-webkit-print-color-adjust:exact}.card{box-shadow:none;break-inside:avoid}.code-panel{print-color-adjust:exact;-webkit-print-color-adjust:exact}.code-scroll{overflow:visible}.code-lines{font-size:10px}.quiz-card{break-inside:avoid}}';document.head.append(s)})();
-drawQuiz();go(lessons.some(x=>x.id==='lesson-'+location.hash.slice(1))?location.hash.slice(1):'mappa');
-</script>
+<header><div class="shell header-inner"><a class="brand" href="./" aria-label="Tutoring, torna alla pagina iniziale"><span class="logo">T</span><span>Tutoring<small>Ripasso e materiali di studio</small></span></a><nav class="headnav" aria-label="Navigazione"><a href="./#materie">Materie</a><a href="./#percorsi">Percorsi</a></nav></div></header>
+<main class="shell">
+<section class="hero" aria-labelledby="titolo"><div class="kicker">Il tuo spazio per ripassare</div><h1 id="titolo">Ogni argomento, un passo alla volta.</h1><p>Mappe, schemi semplici, esempi svolti ed esercizi. Scegli una materia e riparti dal punto che ti serve.</p></section>
+<section id="materie" aria-labelledby="titolo-materie"><div class="section-head"><div><div class="kicker" style="color:#607ba4">Esplora</div><h2 id="titolo-materie">Materie</h2></div><p>La raccolta crescerà con nuovi argomenti.</p></div>
+<div class="grid">
+<a class="card" href="informatica/"><div class="card-top"><span class="card-symbol blue" aria-hidden="true">{ }</span><span class="pill ready">1 percorso disponibile</span></div><h3>Informatica</h3><p>Programmazione, variabili, tipi, sottoprogrammi e C++, spiegati attraverso esempi e schemi colorati.</p><div class="card-bottom"><span>Esplora gli argomenti</span><span class="arrow" aria-hidden="true">→</span></div></a>
+<a class="card" href="matematica/"><div class="card-top"><span class="card-symbol purple" aria-hidden="true">∑</span><span class="pill soon">In preparazione</span></div><h3>Matematica</h3><p>Una sezione dedicata ai ripassi di matematica, pronta ad accogliere mappe, formule ed esercizi.</p><div class="card-bottom"><span>Vai alla sezione</span><span class="arrow" aria-hidden="true">→</span></div></a>
+</div></section>
+<section id="percorsi" aria-labelledby="titolo-percorsi"><div class="section-head"><div><div class="kicker" style="color:#607ba4">Inizia da qui</div><h2 id="titolo-percorsi">Percorsi disponibili</h2></div></div>
+<div class="feature"><div><div class="kicker">Informatica · C++</div><h3>Variabili, funzioni e procedure</h3><p>Otto lezioni, mappe concettuali, codice numerato e colorato, esempi svolti, simulazioni ed esercizi interattivi.</p></div><a class="cta" href="informatica/cpp-sottoprogrammi/">Apri la guida <span aria-hidden="true">→</span></a></div></section>
+</main><footer><div class="shell"><span>Tutoring · Materiali di ripasso</span><a href="./">Torna alla homepage</a></div></footer>
 </body>
 </html>
