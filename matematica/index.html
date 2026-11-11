@@ -7,15 +7,13 @@
 <meta name="description" content="Ripasso di matematica: dominio, studio del segno, funzione inversa e composizione, con mappe, esempi, esercizi e verifiche.">
 <title>Matematica | Tutoring</title>
 <link rel="stylesheet" href="assets/guida.css">
+<link rel="stylesheet" href="../assets/site.css">
+<script defer src="../assets/site.js" data-root="../"></script>
 </head>
 <body>
-<header class="top"><div class="wrap top-inner">
-<a class="identity" href="../"><span class="brand-icon">T</span><span>Tutoring<small>Ripasso e materiali di studio</small></span></a>
-<nav class="top-links" aria-label="Navigazione"><a href="../">Tutte le materie</a><a href="../informatica/">Informatica</a></nav>
-</div></header>
 <main class="wrap">
 <nav class="crumbs" aria-label="Percorso di navigazione"><a href="../">Home</a><span>›</span>Matematica</nav>
-<section class="hero" aria-labelledby="titolo"><div class="eyebrow">La tua raccolta di ripasso</div><h1 id="titolo">Matematica, passo dopo passo.</h1><p>Un percorso per ogni argomento: mappe per orientarti, regole essenziali, esempi svolti un passaggio alla volta, esercizi del libro e quiz per metterti alla prova.</p><div class="stats"><span class="stat">4 argomenti</span><span class="stat">34 esercizi del libro</span><span class="stat">24 domande interattive</span></div></section>
+<section class="hero" aria-labelledby="titolo"><div class="eyebrow">La tua raccolta di ripasso</div><h1 id="titolo">Matematica, passo dopo passo.</h1><p>Un percorso per ogni argomento: mappe per orientarti, regole essenziali, esempi svolti un passaggio alla volta, esercizi autonomi e quiz per metterti alla prova.</p><div class="stats"><span class="stat">4 argomenti</span><span class="stat">34 esercizi di allenamento</span><span class="stat">24 domande interattive</span></div></section>
 <section class="panel" aria-label="I tuoi progressi">
 <div style="display:flex;align-items:center;justify-content:space-between;gap:13px;flex-wrap:wrap">
 <div><div class="section-label">I tuoi progressi</div><strong><span id="progress">0</span> percorsi ripassati su 4</strong></div>
@@ -24,32 +22,15 @@
 </section>
 <section aria-labelledby="argomenti" style="margin:34px 0">
 <div class="section-label">Scegli da dove iniziare</div><h2 id="argomenti">Gli argomenti</h2>
-<div class="matters">
-<a class="matter" href="dominio/">
-<span class="count">01 · pag. 801 · 10 esercizi</span><h3>Dominio delle funzioni</h3>
-<p>Quali valori di x sono permessi? Frazioni, radici, logaritmi e condizioni da mettere a sistema.</p><div class="go">Apri il percorso → <span class="mini" id="done-dominio"></span></div>
-</a>
-<a class="matter" href="segno/">
-<span class="count">02 · pag. 807 · 10 esercizi</span><h3>Studio del segno</h3>
-<p>Intervalli positivi e negativi, zeri, grafico sopra o sotto l’asse x e intersezioni con gli assi.</p><div class="go">Apri il percorso → <span class="mini" id="done-segno"></span></div>
-</a>
-<a class="matter" href="inversa/">
-<span class="count">03 · pag. 817 · 7 esercizi</span><h3>Funzione inversa</h3>
-<p>Ricava la variabile, scambia x con y, verifica che l’inversa esista e determina il suo dominio.</p><div class="go">Apri il percorso → <span class="mini" id="done-inversa"></span></div>
-</a>
-<a class="matter" href="composizione/">
-<span class="count">04 · pag. 820 · 7 esercizi</span><h3>Composizione di funzioni</h3>
-<p>Metti una funzione dentro l’altra, confronta f∘g con g∘f e controlla i domini.</p><div class="go">Apri il percorso → <span class="mini" id="done-composizione"></span></div>
-</a>
-</div></section>
-<div class="panel"><h3>Come utilizzare le guide</h3><p>Segui la <strong>mappa</strong>, leggi le <strong>regole</strong>, poi apri gli <strong>esempi guidati</strong> uno step alla volta. Gli esercizi sono indicati con gli stessi numeri delle fotografie del libro; puoi aprire i risultati solo quando hai provato a risolverli. Infine rispondi alle domande e segna l’argomento come ripassato.</p><div class="tip">Gli esercizi rimandano alle pagine del tuo libro: il sito mostra formule, risultati e spiegazioni sintetiche, non sostituisce il testo.</div></div>
+<div data-topic-catalog="matematica"></div></section>
+<div class="panel"><h3>Come utilizzare le guide</h3><p>Segui la <strong>mappa</strong>, leggi le <strong>regole</strong>, poi apri gli <strong>esempi guidati</strong> uno step alla volta. Gli esercizi sono completi di formula e soluzione: puoi aprire il risultato soltanto dopo aver provato a risolverli. Infine rispondi alle domande e segna l’argomento come ripassato.</p><div class="tip">I percorsi sono autonomi: non serve alcun libro o altro materiale per seguirli.</div></div>
 <div class="home-link"><a class="btn" href="../">← Torna a tutte le materie</a></div>
 </main>
 <footer><div class="wrap">Tutoring · Matematica <span style="float:right"><a href="../">Homepage</a></span></div></footer>
 <script>
 (function(){
   var ids=['dominio','segno','inversa','composizione'],count=0;
-  ids.forEach(function(id){try{if(localStorage.getItem('tutoring-matematica-v1:'+id)==='1'){count++;document.getElementById('done-'+id).textContent='· ✓ ripassato'}}catch(e){}});
+  ids.forEach(function(id){try{if(localStorage.getItem('tutoring-matematica-v1:'+id)==='1'){count++}}catch(e){}});
   document.getElementById('progress').textContent=count;
   document.getElementById('progressbar').style.width=(count/4*100)+'%';
 })();
