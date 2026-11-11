@@ -4,13 +4,13 @@
 const current=document.currentScript;
 const root=new URL(current?.getAttribute("data-root")||"./",document.baseURI);
 const topics=[
- {title:"C++ · Variabili, funzioni e procedure",category:"Informatica",path:"informatica/cpp-sottoprogrammi/",description:"Tipi int, float, double e string; parametri, return, void, chiamate, esempi ed esercizi.",keywords:"c++ cplusplus programmazione codice sottoprogrammi variabile variabili tipi tipo funzione funzioni procedura procedure void return main parametri formali attuali output input"},
+ {title:"C++ · Variabili, funzioni e procedure",category:"Informatica",path:"informatica/cpp-sottoprogrammi/",description:"Tipi int, float, double e string; parametri, return, void, chiamate, esempi ed esercizi.",keywords:"c++ cpp cplusplus programmazione codice sottoprogrammi variabile variabili tipi tipo funzione funzioni procedura procedure void return main parametri formali attuali output input"},
  {title:"Dominio delle funzioni",category:"Matematica",path:"matematica/dominio/",description:"Condizioni di esistenza: radici, frazioni, logaritmi, esponenziali e intervalli.",keywords:"dominio condizioni esistenza denominatore radicando logaritmo logaritmi frazioni esponenziale radici funzione insieme definizione"},
  {title:"Studio del segno",category:"Matematica",path:"matematica/segno/",description:"Funzioni positive e negative, zeri, intersezioni con gli assi e tabella dei segni.",keywords:"segno positività negativa zeri zero intersezione assi grafico positivi intervalli tabella frazioni"},
  {title:"Funzione inversa",category:"Matematica",path:"matematica/inversa/",description:"Come ricavare l'inversa, controllare l'iniettività e stabilire il dominio.",keywords:"inversa invertibilità invertibile iniettiva iniettività funzione scambio x y inverso"},
  {title:"Composizione di funzioni",category:"Matematica",path:"matematica/composizione/",description:"f∘g e g∘f, sostituzione di funzioni e controllo dei domini.",keywords:"composizione composta funzioni composita sostituzione fg gf g(f(x)) f(g(x))"}
 ];
-function norm(s){return String(s||"").toLocaleLowerCase("it").normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g," ").trim()}
+function norm(s){return String(s||"").replace(/c\+\+/gi,"cpp").toLocaleLowerCase("it").normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g," ").trim()}
 function search(q,scope){let n=norm(q);return topics.filter(t=>(!scope||scope==="all"||norm(t.category)===norm(scope))&&(!n||n.split(/\s+/).every(w=>norm(t.title+" "+t.description+" "+t.category+" "+t.keywords).includes(w))))}
 function url(p){return new URL(p,root).href}
 function el(tag,cls,txt){const a=document.createElement(tag);if(cls)a.className=cls;if(txt!==undefined)a.textContent=txt;return a}
