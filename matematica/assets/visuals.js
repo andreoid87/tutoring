@@ -38,9 +38,33 @@ function segment(fn,a,b,p,color,width=3,extra=""){
 function legend(){
  return '<div class="legend"><span class="legend-item"><i class="dot positive"></i> Positiva</span><span class="legend-item"><i class="dot negative"></i> Negativa</span><span class="legend-item"><i class="dot invalid"></i> Fuori dal dominio</span></div>';
 }
+
+function signLogic(target){
+ const host=el("div","math-visual");
+ host.innerHTML='<h4>Quattro combinazioni, una sola regola</h4><div class="sign-choices"><div class="sign-choice positive"><b>(−, −) → +</b><span>Concordi</span></div><div class="sign-choice negative"><b>(−, +) → −</b><span>Discordi</span></div><div class="sign-choice negative"><b>(+, −) → −</b><span>Discordi</span></div><div class="sign-choice positive"><b>(+, +) → +</b><span>Concordi</span></div></div><p>Esempio: f(x) = (x + 2)(x − 1). Il risultato è rosso dove i fattori hanno segni diversi.</p><div class="graph-wrap"><svg viewBox="0 0 600 158" role="img" aria-label="Barra dei segni: positivo, negativo, positivo"></svg></div><div class="legend"><span class="legend-item"><i class="dot positive"></i>Segno +</span><span class="legend-item"><i class="dot negative"></i>Segno −</span></div>';
+ const svg=host.querySelector("svg");
+ svg.innerHTML='<line x1="35" y1="78" x2="565" y2="78" stroke="#7890af" stroke-width="2"/>'+
+ '<rect x="35" y="59" width="180" height="35" rx="5" fill="'+C.good+'" opacity=".15"/>'+
+ '<rect x="215" y="59" width="195" height="35" rx="5" fill="'+C.bad+'" opacity=".18"/>'+
+ '<rect x="410" y="59" width="155" height="35" rx="5" fill="'+C.good+'" opacity=".15"/>'+
+ '<path d="M35 78 H215" stroke="'+C.good+'" stroke-width="5"/>'+
+ '<path d="M215 78 H410" stroke="'+C.bad+'" stroke-width="5"/>'+
+ '<path d="M410 78 H565" stroke="'+C.good+'" stroke-width="5"/>'+
+ '<circle cx="215" cy="78" r="7" fill="#fff" stroke="#285fc6" stroke-width="2"/><circle cx="410" cy="78" r="7" fill="#fff" stroke="#285fc6" stroke-width="2"/>'+
+ '<text x="124" y="47" text-anchor="middle" font-size="18" font-weight="800" fill="'+C.good+'">+</text>'+
+ '<text x="313" y="47" text-anchor="middle" font-size="18" font-weight="800" fill="'+C.bad+'">−</text>'+
+ '<text x="487" y="47" text-anchor="middle" font-size="18" font-weight="800" fill="'+C.good+'">+</text>'+
+ '<text x="215" y="118" text-anchor="middle" font-size="13" fill="#33557e">−2</text>'+
+ '<text x="410" y="118" text-anchor="middle" font-size="13" fill="#33557e">1</text>'+
+ '<text x="124" y="139" text-anchor="middle" font-size="12" fill="#60748d">(−, −)</text>'+
+ '<text x="313" y="139" text-anchor="middle" font-size="12" fill="#60748d">(+, −)</text>'+
+ '<text x="487" y="139" text-anchor="middle" font-size="12" fill="#60748d">(+, +)</text>';
+ target.append(host);
+}
+
 function signChart(target){
  const host=el("div","math-visual");
- host.innerHTML='<h4>Concordi = +, discordi = −</h4><div class="sign-choices"><div class="sign-choice positive"><b>(−, −) → +</b><span>Concordi</span></div><div class="sign-choice negative"><b>(−, +) → −</b><span>Discordi</span></div><div class="sign-choice negative"><b>(+, −) → −</b><span>Discordi</span></div><div class="sign-choice positive"><b>(+, +) → +</b><span>Concordi</span></div></div><p>Vale sia per il <strong>prodotto</strong> sia per la <strong>frazione</strong> (ma il denominatore non può essere zero).</p><h4>Muovi gli zeri della funzione</h4><p>Nell’esempio f(x) = 0,35 · (x − a) · (x − b), il tratto sotto l’asse x è <strong style="color:#b33d52">rosso</strong>: la funzione è negativa. Trascina i due punti verdi sull’asse x oppure usa i cursori.</p><div class="graph-wrap"><svg viewBox="0 0 660 330" role="group" aria-label="Grafico interattivo della parabola con zeri trascinabili"></svg></div><div class="visual-controls"><label>Primo zero a = <output id="root-a">−2</output><input class="root-slider" data-root="a" aria-label="Primo zero a" type="range" min="-3.3" max="3.3" step="0.1" value="-2"></label><label>Secondo zero b = <output id="root-b">1,5</output><input class="root-slider" data-root="b" aria-label="Secondo zero b" type="range" min="-3.3" max="3.3" step="0.1" value="1.5"></label></div><div class="readout" aria-live="polite"></div>'+legend()+'<p class="visual-caption">Segna l’intervallo rosso come negativo. Fuori dagli zeri la funzione è positiva; sugli zeri vale 0.</p>';
+ host.innerHTML='<h4>Muovi le intersezioni</h4><p>Nell’esempio f(x) = 0,35 · (x − a) · (x − b), il tratto sotto l’asse x è <strong style="color:#b33d52">rosso</strong>: la funzione è negativa. Trascina i due punti verdi sull’asse x oppure usa i cursori.</p><div class="graph-wrap"><svg viewBox="0 0 660 330" role="group" aria-label="Grafico interattivo della parabola con zeri trascinabili"></svg></div><div class="visual-controls"><label>Primo zero a = <output id="root-a">−2</output><input class="root-slider" data-root="a" aria-label="Primo zero a" type="range" min="-3.3" max="3.3" step="0.1" value="-2"></label><label>Secondo zero b = <output id="root-b">1,5</output><input class="root-slider" data-root="b" aria-label="Secondo zero b" type="range" min="-3.3" max="3.3" step="0.1" value="1.5"></label></div><div class="readout" aria-live="polite"></div>'+legend()+'<p class="visual-caption">Segna l’intervallo rosso come negativo. Fuori dagli zeri la funzione è positiva; sugli zeri vale 0.</p>';
  target.append(host);
  const svg=host.querySelector("svg"),sliders=[...host.querySelectorAll(".root-slider")],read=host.querySelector(".readout");
  const p=plotBox(-4,4,-4.5,9);let a=-2,b=1.5,drag=null;
@@ -169,6 +193,7 @@ function branches(target){
 function mount(name,element){
  try{
   switch(name){
+   case "sign-logic":signLogic(element);break;
    case "sign-chart":signChart(element);break;
    case "sign-functions":miniGraphs(element);break;
    case "inverse-mapping":inverseBoxes(element);break;
