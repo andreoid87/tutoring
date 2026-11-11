@@ -1,0 +1,78 @@
+
+/* Tutoring — linguaggio visivo condiviso tra le materie e le lezioni */
+:root{--tut-bg:#f5f7fb;--tut-paper:#fff;--tut-ink:#1a2940;--tut-muted:#637086;--tut-border:#e0e7f0;--tut-blue:#285fc6;--tut-blue-light:#e9f0ff;--tut-shadow:0 10px 30px rgba(37,54,81,.065);--tut-radius:17px}
+body{background:var(--tut-bg);color:var(--tut-ink);font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+.tut-sitebar,.tut-sitebar *{box-sizing:border-box}
+.tut-sitebar{background:#fff;border-bottom:1px solid var(--tut-border);position:relative;z-index:30;color:var(--tut-ink)}
+.tut-sitebar-inner{max-width:1160px;padding:14px 24px;margin:0 auto;min-height:75px;display:flex;align-items:center;gap:25px}
+.tut-site-brand{color:var(--tut-ink);text-decoration:none;display:flex;align-items:center;gap:11px;flex:none;line-height:1.25;font-size:1.07rem;font-weight:850}
+.tut-site-brand:hover{color:var(--tut-blue)}
+.tut-site-brand small{display:block;font-size:.72rem;font-weight:500;color:var(--tut-muted)}
+.tut-logo{width:43px;height:43px;border-radius:12px;background:#213b64;color:#fff;display:grid;place-items:center;font:800 1.2rem Georgia,serif;flex:none}
+.tut-site-links{display:flex;gap:17px;align-items:center;margin-left:auto}
+.tut-site-links a{font-size:.85rem;font-weight:750;color:#546781;text-decoration:none;white-space:nowrap;padding:6px 0}
+.tut-site-links a:hover,.tut-site-links a[aria-current="page"]{color:var(--tut-blue)}
+.tut-site-search{width:265px;flex:none;position:relative}
+.tut-site-search input,.tut-filter-input{font:inherit;width:100%;color:var(--tut-ink);padding:11px 13px 11px 37px;line-height:1.3;font-size:.88rem;border:1px solid #bfcde1;background:#f8faff;border-radius:11px;outline:none}
+.tut-site-search input:focus,.tut-filter-input:focus{border-color:#6f9bdf;box-shadow:0 0 0 3px #ddebff;background:#fff}
+.tut-site-search .tut-magnify,.tut-filter-wrap .tut-magnify{position:absolute;left:13px;top:12px;font-size:1.03rem;opacity:.65;line-height:1;pointer-events:none}
+.tut-site-search .tut-results{position:absolute;top:calc(100% + 8px);right:0;width:min(420px,85vw);background:#fff;border:1px solid var(--tut-border);box-shadow:0 17px 40px rgba(22,37,63,.17);border-radius:14px;max-height:410px;overflow:auto;padding:7px;z-index:50}
+.tut-results[hidden]{display:none}
+.tut-result-link{display:block;text-decoration:none;color:var(--tut-ink);padding:12px 13px;border-radius:9px;border:1px solid transparent}
+.tut-result-link:hover,.tut-result-link:focus{background:#f1f6ff;border-color:#d5e3fb}
+.tut-result-link b{display:block;line-height:1.4;font-size:.89rem}
+.tut-result-link small{display:block;font-size:.76rem;line-height:1.5;color:#71829c}
+.tut-search-empty{font-size:.84rem;color:var(--tut-muted);padding:16px 13px}
+.tut-search-caption{font-size:.71rem;color:#7385a2;font-weight:850;text-transform:uppercase;letter-spacing:.1em;padding:6px 12px 5px}
+.tut-catalog{margin:17px 0 28px}
+.tut-filter-wrap{position:relative;max-width:550px}
+.tut-filter-input{background:#fff;padding:14px 15px 14px 40px;font-size:1rem}
+.tut-filter-wrap .tut-magnify{top:16px}
+.tut-filter-status{font-size:.8rem;color:var(--tut-muted);margin:12px 0}
+.tut-catalog-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.tut-topic{display:block;border:1px solid var(--tut-border);background:#fff;border-radius:var(--tut-radius);padding:20px 22px;color:var(--tut-ink);box-shadow:var(--tut-shadow);text-decoration:none;min-width:0;transition:transform .15s,border-color .15s}
+.tut-topic:hover{transform:translateY(-2px);border-color:#95b5e7}
+.tut-topic b{font-size:1.03rem;display:block}
+.tut-topic small{display:block;color:#60738e;margin-top:4px;line-height:1.48;font-size:.84rem}
+.tut-topic-category{display:inline-block;font-size:.68rem;color:#305fa9;font-weight:850;letter-spacing:.065em;text-transform:uppercase;margin-bottom:7px}
+.tut-no-match{padding:20px;color:#687b96;border:1px dashed #bbc9dd;border-radius:13px;background:#fff;grid-column:1/-1}
+.tut-catalog-filter[hidden]{display:none!important}
+.tut-catalog-filter-empty[hidden]{display:none!important}
+/* Stessa palette, tipografia, superfici e raggi negli indici e nelle lezioni */
+.shell,.wrap{max-width:1160px}
+body .hero:not(.plain),body .hero.purple,body .hero.orange,body .hero.green{background:linear-gradient(125deg,#213b64,#315da0);color:#fff;border-radius:21px}
+body .hero:not(.plain) p{color:#e2ecff}
+body .hero:not(.plain) .eyebrow,body .hero .kicker{color:#c8dcff}
+body .card,body .panel,body .rule,body .matter,body .feature,body .mapnode,body .topic,body .branch,body .exercise,body .quiz-card{border-radius:var(--tut-radius);border-color:var(--tut-border);box-shadow:var(--tut-shadow)}
+body .card h3,body .panel h3,body .matter h3{color:var(--tut-ink)}
+body .btn.primary,body .button.primary,body .cta{background:var(--tut-blue);border-color:var(--tut-blue);color:#fff}
+body .btn.primary:hover,body .button.primary:hover,body .cta:hover{background:#174daa;color:#fff}
+body footer{color:#7d8da1}
+body .progress-track,body .meter{background:#e5ebf4}
+body .progress-track>span,body .meter>span{background:linear-gradient(90deg,#5489ec,#2ca57a)}
+/* La barra superiore comune sostituisce le intestazioni precedenti. */
+body .layout .sidebar{top:0}
+body .layout .main .content{max-width:1010px}
+body .layout .sidebar .logo{background:#213b64}
+body .layout .code-panel{box-shadow:var(--tut-shadow)}
+/* Ricerca nell'indice delle materie */
+.tut-filterable[hidden]{display:none!important}
+@media(max-width:1080px){
+ .tut-sitebar-inner{gap:16px}
+ .tut-site-links{gap:12px}
+ .tut-site-search{width:235px}
+}
+@media(max-width:760px){
+ .tut-sitebar-inner{padding:10px 14px 12px;display:grid;grid-template-columns:1fr auto;gap:10px;min-height:auto}
+ .tut-logo{width:36px;height:36px;border-radius:10px}
+ .tut-site-brand{font-size:1rem}
+ .tut-site-links{margin:0;gap:12px;justify-self:end}
+ .tut-site-links a{font-size:.77rem}
+ .tut-site-search{width:100%;grid-column:1/-1}
+ .tut-site-search input{width:100%;font-size:.88rem}
+ .tut-site-search .tut-results{width:100%;left:0;right:auto}
+ .tut-catalog-list{grid-template-columns:1fr}
+ .tut-topic{padding:17px}
+}
+@media(max-width:390px){.tut-site-brand small{display:none}.tut-site-links{gap:9px}}
+@media(prefers-reduced-motion:reduce){.tut-topic{transition:none}}
